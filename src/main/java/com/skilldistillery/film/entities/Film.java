@@ -1,8 +1,6 @@
 package com.skilldistillery.film.entities;
 
 import java.util.List;
-
-import org.springframework.stereotype.Component;
 public class Film {
 
 	private int id;
