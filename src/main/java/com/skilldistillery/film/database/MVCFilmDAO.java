@@ -30,28 +30,28 @@ public class MVCFilmDAO implements FilmDAO {
 		}
 	}
 
-//	@Override
-//	public Film createFilm(Film addFilm) {
-//		Film filmToBeInserted = null;
-//		try {
-//			Connection conn = DriverManager.getConnection(URL, user, pass);
-//			conn.setAutoCommit(false); // START TRANSACTION
-//			String sql = "INSERT INTO film ( title, description, release_year, language_id,rating) "
-//					+ " VALUES (?,?,?,?,?)";
-//			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//			stmt.setString(1, addFilm.getTitle());
-//			stmt.setString(2, addFilm.getDescription());
-//			stmt.setLong(3, addFilm.getRelease_year());
-//			stmt.setString(4, addFilm.getLanguage_id());
-//			stmt.setString(5, addFilm.getRating());
-////			ResultSet updateCount = stmt.executeQuery();
-//
-//		} catch (Exception e) {
-//		}
-//
-//		return filmToBeInserted;
-//
-//	}
+	@Override
+	public Film addFilm(Film addFilm) {
+		Film filmToBeInserted = null;
+		try {
+			Connection conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false); // START TRANSACTION
+			String sql = "INSERT INTO film ( title, description, release_year, replacement_cost, rating) "
+					+ " VALUES (?,?,?,?,?)";
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, addFilm.getTitle());
+			stmt.setString(2, addFilm.getDescription());
+			stmt.setLong(3, addFilm.getRelease_year());
+			stmt.setDouble(4, addFilm.getReplacement_cost());
+			stmt.setString(5, addFilm.getRating());
+//			ResultSet updateCount = stmt.executeQuery();
+
+		} catch (Exception e) {
+		}
+
+		return filmToBeInserted;
+
+	}
 
 	@Override
 	public Film findFilmById(int filmID) {

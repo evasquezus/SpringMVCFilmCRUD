@@ -46,6 +46,22 @@ public class FilmAppController {
 		}
 
 	}
+	
+	// { "id", "second" }, 
+	@RequestMapping(path = "AddFilm.do", params = { "title", "description", "release_year", "replacement_cost", "rating" }, method = RequestMethod.POST)
+	public ModelAndView addFilm(Film film) {
+		ModelAndView mv = new ModelAndView();
+		dao.addFilm(film);
+		try {
+			mv.addObject("film", film);
+			mv.setViewName("WEB-INF/views/diplayResults.jsp");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return mv;
+		}
+
+	}
 
 //	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
 //	public ModelAndView getFilmByID(String FilmKW) {
