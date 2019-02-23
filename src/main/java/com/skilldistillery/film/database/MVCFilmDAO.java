@@ -59,6 +59,11 @@ public class MVCFilmDAO implements FilmDAO {
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
 			String sql = "SELECT id, title, description, rating, release_year, rental_rate, language_id,replacement_cost, length,rental_duration FROM film  WHERE id = ?";
+		Connection conn;
+		String sql = "SELECT id, title, description, rating, release_year, rental_rate, language_id,replacement_cost, length,rental_duration FROM film  WHERE id = ?";
+
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmID);
 			ResultSet filmResult = stmt.executeQuery();
@@ -152,7 +157,6 @@ public class MVCFilmDAO implements FilmDAO {
 
 	@Override
 	public List<Film> findFilmByKW(String filmKW) {
-		// TODO Auto-generated method stub
 		List<Film> films = new ArrayList<>();
 		Film film = null;
 		try {
