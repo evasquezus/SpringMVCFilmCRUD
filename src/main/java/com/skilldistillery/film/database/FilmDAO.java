@@ -14,5 +14,5 @@ public interface FilmDAO {
 //
 //	List<Film> findFilmByKW(String filmKW);
 //
-//	Film createFilm(Film film);
+	Film addFilm(Film film);
 }

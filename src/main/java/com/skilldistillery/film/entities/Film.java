@@ -18,6 +18,10 @@ public class Film {
 		return id;
 	}
 
+	public Film() {
+	
+	}
+	
 	public Film(int id, String title, String description, int release_year, String language_id, int rental_duration,
 			double rental_rate, int length, double replacement_cost, String rating, List<Actor> actor) {
 		super();
@@ -117,6 +121,10 @@ public class Film {
 
 	public double getReplacement_cost() {
 		return replacement_cost;
+	}
+
+	public void setReplacement_cost(double replacement_cost) {
+		this.replacement_cost = replacement_cost;
 	}
 
 	@Override
