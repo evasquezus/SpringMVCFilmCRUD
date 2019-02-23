@@ -31,18 +31,19 @@ public class FilmAppController {
 		return "WEB-INF/views/home.jsp";
 	}
 
-	@RequestMapping(path = "GetFilm.do", params = { "filmID" }, method = RequestMethod.GET)
-	public ModelAndView getFilmByID(@RequestParam("filmID") int filmID) {
+	@RequestMapping(path = "GetFilm.do", params = { "FilmId" }, method = RequestMethod.GET)
+	public ModelAndView getFilmByID(@RequestParam("FilmId") int FilmID) {
 		ModelAndView mv = new ModelAndView();
 		Film filmSearched;
 		try {
-			filmSearched = dao.findFilmById(filmID);
+			filmSearched = dao.findFilmById(FilmID);
 			mv.addObject("film", filmSearched);
 			mv.setViewName("WEB-INF/views/diplayResults.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			return mv;
+
 		}
 
 	}
@@ -58,7 +59,7 @@ public class FilmAppController {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-//		return mv;
+//		return mv; 	 
 //
 //	}
 }
