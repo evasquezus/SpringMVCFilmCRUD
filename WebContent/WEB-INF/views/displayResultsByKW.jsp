@@ -9,17 +9,6 @@
 </head>
 <body>
 	<h1>Displaying Results</h1>
-<<<<<<< HEAD
-	<h2>Title :</h2>
-	<p>${film.title}</p>
-	<p>${film.description}</p>
-	<p>${film.rating}</p>
-	<c:choose>
-		<c:when test="${! empty film}">
-			<ul>
-				<c:out value="${film.title} "></c:out>
-				<c:out value="${film.description} "></c:out>
-=======
 	<c:choose>
 		<c:when test="${! empty film}">
 			<ul>
@@ -31,7 +20,6 @@
 				<br>
 				<Strong>Rating:</Strong>
 				<br>
->>>>>>> 7d14341a853f74264f8444c768acca0f08360603
 				<c:out value="${film.rating} "></c:out>
 			</ul>
 		</c:when>

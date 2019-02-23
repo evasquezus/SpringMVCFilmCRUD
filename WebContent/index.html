@@ -5,15 +5,35 @@
 <title>MVC APP</title>
 </head>
 <body>
-<<<<<<< HEAD
-=======
+    <img src="http://www.swanseamuseum.co.uk/wp-content/uploads/2015/11/film-reel-250067-1.jpeg" width="600" height="101" alt="Blockbuster">
+  
+	<h1><Strong>Welcome to MVC Film</Strong></h1>
+	<h2>Would you like to:</h2>
+	
+	<h3>Get film by ID</h3>
+	<form action="GetFilmById.do" method="GET">
 
->>>>>>> e0dd10242b6157a55653c675c3235bf06f679bc4
 	<h1>Get film by ID</h1>
 	<form action="GetFilm.do" method="GET">
 		<p>
 			<input type="text" name="filmID" /> <input type="submit"
 				value="Search" />
+		</p>
+	</form>
+
+	<h3>Get film by Keyword</h3>
+	<form action="GetFilmByKW.do" method="GET">
+		<p>
+			<input type="text" name="FilmkW" /> <input type="submit"
+				value="Search" name="FilmKWButton" />
+		</p>
+	</form>
+
+	<h3>Add new Film</h3>
+	<form action="AddFilm.do" method="POST">
+		<p>
+			<input type="text" name="FilmId" /> <input type="submit"
+				value="Search" name="AddFilmButton" />
 		</p>
 	</form>
 </body>
