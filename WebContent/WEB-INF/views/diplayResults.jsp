@@ -5,13 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MVCAPP</title>
+<title>Film By ID</title>
 </head>
 <body>
 	<h1>Displaying Results</h1>
-	<h2>Title :</h2>
+	<h2>Title</h2>
 	<p>${film.title}</p>
+	<h2>Description</h2>
 	<p>${film.description}</p>
+	<h2>Rating</h2>
 	<p>${film.rating}</p>
 	<c:choose>
 		<c:when test="${! empty film}">
@@ -25,5 +27,6 @@
 			<p>No Film Found</p>
 		</c:otherwise>
 	</c:choose>
+
 </body>
 </html>
