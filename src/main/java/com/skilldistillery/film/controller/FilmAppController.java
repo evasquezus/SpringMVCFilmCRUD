@@ -25,7 +25,12 @@ public class FilmAppController {
 		return "WEB-INF/views/diplayResults.jsp";
 	}
 
-	@RequestMapping(path = "GetFilmById.do", method = RequestMethod.POST)
+	@RequestMapping("home.do")
+	public String mainMenu1() {
+		return "WEB-INF/views/home.jsp";
+	}
+
+	@RequestMapping(path = "GetFilm.do", method = RequestMethod.POST)
 	public ModelAndView getFilmByID(int FilmID) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> filmList = new ArrayList<Film>();
@@ -41,7 +46,7 @@ public class FilmAppController {
 
 	}
 
-	@RequestMapping(path = "GetFilmByKW.do", method = RequestMethod.POST)
+	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.POST)
 	public ModelAndView getFilmByID(String FilmKW) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> filmByKW = new ArrayList<Film>();
