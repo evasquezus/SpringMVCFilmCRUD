@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1>Displaying Results</h1>
+<<<<<<< HEAD
 	<c:choose>
 		<c:when test="${! empty film}">
 			<ul>
@@ -27,5 +28,20 @@
 			<p>No Film Found</p>
 		</c:otherwise>
 	</c:choose>
+=======
+
+	  <c:choose>
+      <c:when test="${! empty film}  ">
+        <ul>
+          <li>${film.title}</li>
+          <li>${film.description}</li>
+          <li>${film.ratings}</li>
+        </ul>
+      </c:when>
+      <c:otherwise>
+        <p>No State Found</p>
+      </c:otherwise>
+    </c:choose>
+>>>>>>> parent of e029027... downloading new base
 </body>
 </html>

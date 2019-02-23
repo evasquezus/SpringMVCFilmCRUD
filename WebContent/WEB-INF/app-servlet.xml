@@ -7,6 +7,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+<<<<<<< HEAD
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<context:component-scan
 		base-package="com.skilldistillery.film.controller"></context:component-scan>
@@ -20,4 +21,8 @@
 		class="com.skilldistillery.film.database.MVCFilmDAO">
 	</bean>
 
+=======
+	<context:component-scan
+		base-package="com.skilldistillery.film.controller"></context:component-scan>
+>>>>>>> parent of e029027... downloading new base
 </beans>
