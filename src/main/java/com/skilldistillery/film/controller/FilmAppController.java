@@ -49,9 +49,8 @@ public class FilmAppController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			return mv;
-
 		}
+		return mv;
 
 	}
 

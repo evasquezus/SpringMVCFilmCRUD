@@ -16,6 +16,7 @@
 	<p>${film.title}</p>
 	<p>${film.description}</p>
 	<p>${film.rating}</p>
+<<<<<<< HEAD
 	<c:choose>
 		<c:when test="${! empty film}">
 			<ul>
@@ -23,6 +24,9 @@
 				<c:out value="${film.description} "></c:out>
 =======
 >>>>>>> 16b704cb5b538261e8eae813683ddf054646e526
+=======
+	
+>>>>>>> 59e07691f308012f8a249fdda9afb2225044ed0e
 	<c:choose>
 		<c:when test="${! empty film}">
 			<ul>
@@ -34,7 +38,6 @@
 				<br>
 				<Strong>Rating:</Strong>
 				<br>
->>>>>>> 7d14341a853f74264f8444c768acca0f08360603
 				<c:out value="${film.rating} "></c:out>
 			</ul>
 		</c:when>
