@@ -11,14 +11,7 @@ This is Week 7 [Skill Distillery](http://skilldistillery.com) weekend homework.
   * Inheritance
   * Abstraction
   * Encapsulation
-  *
-  *
-  *
-  *
-  *
-  *
-  *
-  *
+  
 
 
 
