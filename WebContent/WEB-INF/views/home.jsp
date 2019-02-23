@@ -10,11 +10,11 @@
 	<h1>Get film by ID</h1>
 	<form action="GetFilm.do" method="GET">
 		<p>
-			<input type="text" name="FilmId" /> <input type="submit" value="Search" name ="FilmID" />
+			<input type="text" name="FilmId" /> <input type="submit" value="Search" />
 		</p>
 	</form>
 	
-	<h1>Get film by Keyword</h1>
+	<!--<h1>Get film by Keyword</h1>
 	<form action="GetKeyword.do" method="GET">
 		<p>
 			<input type="text" name="FilmId" /> <input type="submit" value="Search" name ="FilmKW"/>
@@ -26,6 +26,6 @@
 		<p>
 			<input type="text" name="FilmId" /> <input type="submit" value="Search" name ="AddFilm"/>
 		</p>
-	</form>
+	</form>-->
 </body>
 </html>

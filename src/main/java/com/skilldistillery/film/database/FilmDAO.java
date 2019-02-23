@@ -6,13 +6,13 @@ import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 public interface FilmDAO {
-	Film findFilmById(int filmId);
+	Film findFilmById(int filmID);
 
-	Actor findActorById(int actorId);
-
-	List<Actor> findActorsByFilmId(int filmId);
-
-	List<Film> findFilmByKW(String filmKW);
-
-	Film createFilm(Film film);
+//	Actor findActorById(int actorId);
+//
+//	List<Actor> findActorsByFilmId(int filmId);
+//
+//	List<Film> findFilmByKW(String filmKW);
+//
+//	Film createFilm(Film film);
 }

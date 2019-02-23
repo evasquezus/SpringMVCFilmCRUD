@@ -31,35 +31,34 @@ public class FilmAppController {
 		return "WEB-INF/views/home.jsp";
 	}
 
-	@RequestMapping(path = "GetFilm.do", params = { "FilmId" }, method = RequestMethod.GET)
-	public ModelAndView getFilmByID(@RequestParam("FilmId") int FilmID) {
+	@RequestMapping(path = "GetFilm.do", params = { "filmID" }, method = RequestMethod.GET)
+	public ModelAndView getFilmByID(@RequestParam("filmID") int filmID) {
 		ModelAndView mv = new ModelAndView();
 		Film filmSearched;
 		try {
-			filmSearched = dao.findFilmById(FilmID);
+			filmSearched = dao.findFilmById(filmID);
 			mv.addObject("film", filmSearched);
 			mv.setViewName("WEB-INF/views/diplayResults.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			return mv;
-
 		}
 
 	}
 
-	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
-	public ModelAndView getFilmByID(String FilmKW) {
-		ModelAndView mv = new ModelAndView();
-		List<Film> filmByKW = new ArrayList<Film>();
-		try {
-			filmByKW = dao.findFilmByKW(FilmKW);
-			mv.addObject("film", filmByKW);
-			mv.setViewName("WEB-INF/views/diplayResults.jsp");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mv;
-
-	}
+//	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
+//	public ModelAndView getFilmByID(String FilmKW) {
+//		ModelAndView mv = new ModelAndView();
+//		List<Film> filmByKW = new ArrayList<Film>();
+//		try {
+//			filmByKW = dao.findFilmByKW(FilmKW);
+//			mv.addObject("film", filmByKW);
+//			mv.setViewName("WEB-INF/views/diplayResults.jsp");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return mv;
+//
+//	}
 }
