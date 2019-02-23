@@ -14,11 +14,5 @@ public interface FilmDAO {
 
 	List<Film> findFilmByKW(String filmKW);
 
-	Actor findActorById(int actorId);
-
-	List<Actor> findActorsByFilmId(int filmId);
-
-	List<Film> findFilmByKW(String filmKW);
-
 	Film createFilm(Film film);
 }

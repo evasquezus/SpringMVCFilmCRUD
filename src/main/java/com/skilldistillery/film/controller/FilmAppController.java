@@ -31,33 +31,24 @@ public class FilmAppController {
 		return "WEB-INF/views/home.jsp";
 	}
 
-	@RequestMapping(path="GetFilm.do",params={"FilmId"},method=RequestMethod.GET)
-
+	@RequestMapping(path = "GetFilm.do", params = { "FilmId" }, method = RequestMethod.GET)
 	public ModelAndView getFilmByID(@RequestParam("FilmId") int FilmID) {
-
-	@RequestMapping(path = "GetFilm.do", method = RequestMethod.POST)
-	public ModelAndView getFilmByID(int FilmID) {
 		ModelAndView mv = new ModelAndView();
 		Film filmSearched;
 		try {
 			filmSearched = dao.findFilmById(FilmID);
 			mv.addObject("film", filmSearched);
-			Film filmSearched = dao.findFilmById(FilmID);
-			filmList.add(filmSearched);
-			mv.addObject("film", filmList);
 			mv.setViewName("WEB-INF/views/diplayResults.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			return mv;
+
 		}
-		return mv;
 
 	}
 
 	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
-
-	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.POST)
-
 	public ModelAndView getFilmByID(String FilmKW) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> filmByKW = new ArrayList<Film>();

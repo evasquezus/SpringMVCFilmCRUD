@@ -56,9 +56,6 @@ public class MVCFilmDAO implements FilmDAO {
 	@Override
 	public Film findFilmById(int filmID) {
 		Film film = null;
-		try {
-			Connection conn = DriverManager.getConnection(URL, user, pass);
-			String sql = "SELECT id, title, description, rating, release_year, rental_rate, language_id,replacement_cost, length,rental_duration FROM film  WHERE id = ?";
 		Connection conn;
 		String sql = "SELECT id, title, description, rating, release_year, rental_rate, language_id,replacement_cost, length,rental_duration FROM film  WHERE id = ?";
 
