@@ -9,15 +9,17 @@
 </head>
 <body>
 	<h1>Displaying Results</h1>
-	<h2>Title :</h2>
-	<p>${film.title}</p>
-	<p>${film.description}</p>
-	<p>${film.rating}</p>
 	<c:choose>
 		<c:when test="${! empty film}">
 			<ul>
+				<Strong>Title:</Strong>
 				<c:out value="${film.title} "></c:out>
+				<br>
+				<Strong>Description:</Strong>
 				<c:out value="${film.description} "></c:out>
+				<br>
+				<Strong>Rating:</Strong>
+				<br>
 				<c:out value="${film.rating} "></c:out>
 			</ul>
 		</c:when>

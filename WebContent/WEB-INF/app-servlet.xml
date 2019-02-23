@@ -13,5 +13,4 @@
 	<bean id="dao"
 		class="com.skilldistillery.film.database.MVCFilmDAO">
 	</bean>
-
 </beans>
