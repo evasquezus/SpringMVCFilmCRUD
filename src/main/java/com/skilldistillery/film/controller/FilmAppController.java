@@ -17,7 +17,6 @@ import com.skilldistillery.film.entities.Film;
 @Controller
 public class FilmAppController {
 	Scanner input = new Scanner(System.in);
-
 	@Autowired
 	private FilmDAO dao;
 
