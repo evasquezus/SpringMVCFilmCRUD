@@ -31,18 +31,30 @@ public class MVCFilmDAO implements FilmDAO {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public Film createFilm(Film addFilm) {
+=======
+	public Film addFilm(Film addFilm) {
+>>>>>>> 62f2410e847da49adde974cecc940bd8d10d1721
 		Film filmToBeInserted = null;
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false); // START TRANSACTION
+<<<<<<< HEAD
 			String sql = "INSERT INTO film ( title, description, release_year, language_id,rating) "
+=======
+			String sql = "INSERT INTO film ( title, description, release_year, replacement_cost, rating) "
+>>>>>>> 62f2410e847da49adde974cecc940bd8d10d1721
 					+ " VALUES (?,?,?,?,?)";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, addFilm.getTitle());
 			stmt.setString(2, addFilm.getDescription());
 			stmt.setLong(3, addFilm.getRelease_year());
+<<<<<<< HEAD
 			stmt.setString(4, addFilm.getLanguage_id());
+=======
+			stmt.setDouble(4, addFilm.getReplacement_cost());
+>>>>>>> 62f2410e847da49adde974cecc940bd8d10d1721
 			stmt.setString(5, addFilm.getRating());
 //			ResultSet updateCount = stmt.executeQuery();
 
