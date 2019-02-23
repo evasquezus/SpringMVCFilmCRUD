@@ -13,4 +13,11 @@
 	<bean id="dao"
 		class="com.skilldistillery.film.database.MVCFilmDAO">
 	</bean>
+	<context:component-scan
+		base-package="com.skilldistillery.film.database"></context:component-scan>
+		
+	<bean id="dao"
+		class="com.skilldistillery.film.database.MVCFilmDAO">
+	</bean>
+
 </beans>
