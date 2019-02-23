@@ -17,10 +17,7 @@ import com.skilldistillery.film.entities.Film;
 @Controller
 public class FilmAppController {
 	Scanner input = new Scanner(System.in);
-<<<<<<< HEAD
 
-=======
->>>>>>> 7d14341a853f74264f8444c768acca0f08360603
 	@Autowired
 	private FilmDAO dao;
 
@@ -45,9 +42,8 @@ public class FilmAppController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			return mv;
-
 		}
+		return mv;
 
 	}
 
