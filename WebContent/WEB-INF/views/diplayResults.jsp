@@ -14,8 +14,6 @@
       <c:when test="${! empty film}  ">
         <ul>
           <li>${film.title}</li>
-          <li>${film.description}</li>
-          <li>${film.ratings}</li>
         </ul>
       </c:when>
       <c:otherwise>
