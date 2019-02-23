@@ -32,8 +32,8 @@ public class FilmAppController {
 		return "WEB-INF/views/home.jsp";
 	}
 
-	@RequestMapping(path = "GetFilm.do", params = { "FilmId" }, method = RequestMethod.GET)
-	public ModelAndView getFilmByID(@RequestParam("FilmId") int FilmID) {
+	@RequestMapping(path = "GetFilm.do", params = { "filmID" }, method = RequestMethod.GET)
+	public ModelAndView getFilmByID(@RequestParam("filmID") int FilmID) {
 		ModelAndView mv = new ModelAndView();
 		Film filmSearched;
 		try {
