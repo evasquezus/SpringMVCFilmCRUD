@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.film.database.FilmDAO;
 import com.skilldistillery.film.entities.Film;
 
-
 @Controller
 public class FilmAppController {
 	Scanner input = new Scanner(System.in);
@@ -33,18 +32,17 @@ public class FilmAppController {
 	}
 
 	@RequestMapping(path = "GetFilm.do", params = { "filmID" }, method = RequestMethod.GET)
-	public ModelAndView getFilmByID(@RequestParam("filmID") int FilmID) {
+	public ModelAndView getFilmByID(@RequestParam("filmID") int filmID) {
 		ModelAndView mv = new ModelAndView();
 		Film filmSearched;
 		try {
-			filmSearched = dao.findFilmById(FilmID);
+			filmSearched = dao.findFilmById(filmID);
 			mv.addObject("film", filmSearched);
 			mv.setViewName("WEB-INF/views/diplayResults.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			return mv;
-
 		}
 
 	}
@@ -60,7 +58,7 @@ public class FilmAppController {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-//		return mv; 	 
+//		return mv;
 //
 //	}
 }
