@@ -2,6 +2,7 @@ package com.skilldistillery.film.entities;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 public class Film {
 
 	private int id;
@@ -15,7 +16,6 @@ public class Film {
 	private double replacement_cost;
 	private String rating;
 	private List<Actor> actor;
-
 	public int getId() {
 		return id;
 	}

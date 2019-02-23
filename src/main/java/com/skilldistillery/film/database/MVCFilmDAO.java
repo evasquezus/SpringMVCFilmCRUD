@@ -5,13 +5,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
-public class DatabaseAccessorObject implements DatabaseAccessor {
+@Repository
+public class MVCFilmDAO implements FilmDAO {
 
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
 	private static final String user = "student";
@@ -23,27 +28,32 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		} catch (ClassNotFoundException e) {
 			System.err.println(e);
 		}
-
 	}
 
-//	public DatabaseAccessorObject() throws ClassNotFoundException {
-//		Class.forName("com.mysql.jdbc.Driver");
-//	}
-	public Film createFilm(Film film) {
+	@Override
+	public Film createFilm(Film addFilm) {
 		Film filmToBeInserted = null;
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false); // START TRANSACTION
-			String sql = "INSERT INTO film (d, title, description, release_year, language_id, rental_duration,rental_rate, length, replacement_cost, rating, special_features) "
-	                     + " VALUES (?,?)";
-		} catch (Exception e) {
+			String sql = "INSERT INTO film ( title, description, release_year, language_id,rating) "
+					+ " VALUES (?,?,?,?,?)";
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, addFilm.getTitle());
+			stmt.setString(2, addFilm.getDescription());
+			stmt.setLong(3, addFilm.getRelease_year());
+			stmt.setString(4, addFilm.getLanguage_id());
+			stmt.setString(5, addFilm.getRating());
+//			ResultSet updateCount = stmt.executeQuery();
 
+		} catch (Exception e) {
 		}
 
-		return film;
+		return filmToBeInserted;
 
 	}
 
+	@Override
 	public Film findFilmById(int filmID) {
 		Film film = null;
 		try {
@@ -80,6 +90,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return film;
 	}
 
+	@Override
 	public Actor findActorById(int actorID) {
 		Actor actor = null;
 		try {
@@ -105,12 +116,12 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return actor;
 	}
 
+	@Override
 	public List<Actor> findActorsByFilmId(int actorID) {
 		List<Actor> actors = new ArrayList<>();
 		Actor actor = null;
@@ -134,7 +145,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return actors;
@@ -163,7 +173,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			filmResult.close();
 			stmt.close();
 		} catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return films;
