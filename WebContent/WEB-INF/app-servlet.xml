@@ -9,4 +9,7 @@
 
 	<context:component-scan
 		base-package="com.skilldistillery.film.controller"></context:component-scan>
+	<context:component-scan
+		base-package="com.skilldistillery.film.database"></context:component-scan>
+		
 </beans>
