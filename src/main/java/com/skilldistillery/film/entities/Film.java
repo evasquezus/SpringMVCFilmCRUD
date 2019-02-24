@@ -39,16 +39,13 @@ public class Film {
 	}
 
 	public Film(int id2, String title2, int release_year2, String rating2, String description2) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Film(int id2, String title2, int release_year2, String description2) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Film(int id2, String title2, String description2, int releaseYear, String languageID, int rentalDuration,
 			String languageID2) {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -56,7 +53,7 @@ public class Film {
 		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", release_year=" + release_year
 				+ ", language_id=" + language_id + ", rental_duration=" + rental_duration + ", rental_rate="
 				+ rental_rate + ", length=" + length + ", replacement_cost=" + replacement_cost + ", rating=" + rating
-				+ "]";
+				+ "]\n";
 	}
 
 	public void setId(int id) {

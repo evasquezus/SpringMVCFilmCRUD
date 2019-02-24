@@ -31,30 +31,25 @@ public class MVCFilmDAO implements FilmDAO {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public Film createFilm(Film addFilm) {
-=======
+		return addFilm;
+
+	}
+
 	public Film addFilm(Film addFilm) {
->>>>>>> 62f2410e847da49adde974cecc940bd8d10d1721
 		Film filmToBeInserted = null;
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false); // START TRANSACTION
-<<<<<<< HEAD
-			String sql = "INSERT INTO film ( title, description, release_year, language_id,rating) "
-=======
-			String sql = "INSERT INTO film ( title, description, release_year, replacement_cost, rating) "
->>>>>>> 62f2410e847da49adde974cecc940bd8d10d1721
+			String sql = "INSERT INTO film title, description, release_year, language_id,rating";
+			String sql1 = "INSERT INTO film title, description, release_year, replacement_cost, rating "
 					+ " VALUES (?,?,?,?,?)";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, addFilm.getTitle());
 			stmt.setString(2, addFilm.getDescription());
 			stmt.setLong(3, addFilm.getRelease_year());
-<<<<<<< HEAD
 			stmt.setString(4, addFilm.getLanguage_id());
-=======
 			stmt.setDouble(4, addFilm.getReplacement_cost());
->>>>>>> 62f2410e847da49adde974cecc940bd8d10d1721
 			stmt.setString(5, addFilm.getRating());
 //			ResultSet updateCount = stmt.executeQuery();
 
@@ -63,6 +58,22 @@ public class MVCFilmDAO implements FilmDAO {
 
 		return filmToBeInserted;
 
+	}
+
+	public boolean deleteFilm(int filmId) throws SQLException {
+
+		Connection conn = DriverManager.getConnection(URL, user, pass);
+		String sql = "DELETE FROM film WHERE id = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, filmId);
+		int updateCount = stmt.executeUpdate();
+		conn.commit();
+		if (updateCount == 1) {
+			return true;
+		}
+		stmt.close();
+		conn.close();
+		return false;
 	}
 
 	@Override
@@ -98,7 +109,6 @@ public class MVCFilmDAO implements FilmDAO {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return film;
@@ -134,6 +144,7 @@ public class MVCFilmDAO implements FilmDAO {
 		}
 		return actor;
 	}
+
 //
 	@Override
 	public List<Actor> findActorsByFilmId(int actorID) {
@@ -163,11 +174,11 @@ public class MVCFilmDAO implements FilmDAO {
 		}
 		return actors;
 	}
+
 //
 	@Override
 	public List<Film> findFilmByKW(String filmKW) {
 		List<Film> films = new ArrayList<>();
-		Film film = null;
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
 			String sql = "SELECT * FROM film WHERE title LIKE ? OR description like ?;";
@@ -181,7 +192,6 @@ public class MVCFilmDAO implements FilmDAO {
 				films.add(findFilmById(filmResult.getInt("id")));
 
 			}
-
 			conn.close();
 			filmResult.close();
 			stmt.close();
