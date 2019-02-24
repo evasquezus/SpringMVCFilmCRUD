@@ -7,7 +7,7 @@ public class Film {
 	private String title;
 	private String description;
 	private int release_year;
-	private String language_id;
+	private int language_id;
 	private int rental_duration;
 	private double rental_rate;
 	private int length;
@@ -22,7 +22,7 @@ public class Film {
 	
 	}
 	
-	public Film(int id, String title, String description, int release_year, String language_id, int rental_duration,
+	public Film(int id, String title, String description, int release_year, int language_id, int rental_duration,
 			double rental_rate, int length, double replacement_cost, String rating, List<Actor> actor) {
 		super();
 		this.id = id;
@@ -46,7 +46,7 @@ public class Film {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Film(int id2, String title2, String description2, int releaseYear, String languageID, int rentalDuration,
+	public Film(int id2, String title2, String description2, int releaseYear, int languageID, int rentalDuration,
 			String languageID2) {
 		// TODO Auto-generated constructor stub
 	}
@@ -56,7 +56,7 @@ public class Film {
 		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", release_year=" + release_year
 				+ ", language_id=" + language_id + ", rental_duration=" + rental_duration + ", rental_rate="
 				+ rental_rate + ", length=" + length + ", replacement_cost=" + replacement_cost + ", rating=" + rating
-				+ "]";
+				+ ", actor=" + actor + "]";
 	}
 
 	public void setId(int id) {
@@ -87,11 +87,11 @@ public class Film {
 		this.release_year = release_year;
 	}
 
-	public String getLanguage_id() {
+	public int getLanguage_id() {
 		return language_id;
 	}
 
-	public void setLanguage_id(String language_id) {
+	public void setLanguage_id(int language_id) {
 		this.language_id = language_id;
 	}
 
@@ -134,7 +134,7 @@ public class Film {
 		result = prime * result + ((actor == null) ? 0 : actor.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((language_id == null) ? 0 : language_id.hashCode());
+		result = prime * result + language_id;
 		result = prime * result + length;
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
 		result = prime * result + release_year;
@@ -169,10 +169,7 @@ public class Film {
 			return false;
 		if (id != other.id)
 			return false;
-		if (language_id == null) {
-			if (other.language_id != null)
-				return false;
-		} else if (!language_id.equals(other.language_id))
+		if (language_id != other.language_id)
 			return false;
 		if (length != other.length)
 			return false;

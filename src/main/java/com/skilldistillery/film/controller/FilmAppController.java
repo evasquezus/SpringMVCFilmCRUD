@@ -47,14 +47,13 @@ public class FilmAppController {
 
 	}
 	
-	// { "id", "second" }, 
-	@RequestMapping(path = "AddFilm.do", params = { "title", "description", "release_year", "replacement_cost", "rating" }, method = RequestMethod.POST)
+	@RequestMapping(path = "AddFilm.do", params = { "title", "description", "release_year", "language_id", "rental_duration", "rental_rate", "length", "replacement_cost", "rating"}, method = RequestMethod.POST)
 	public ModelAndView addFilm(Film film) {
 		ModelAndView mv = new ModelAndView();
 		dao.addFilm(film);
 		try {
 			mv.addObject("film", film);
-			mv.setViewName("WEB-INF/views/diplayResults.jsp");
+			mv.setViewName("WEB-INF/views/diplayAddFilm.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

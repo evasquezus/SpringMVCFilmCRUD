@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Displaying Results</h1>
-	<h2>Title :</h2>
+	
 	<p>${film.title}</p>
 	<p>${film.description}</p>
 	<p>${film.rating}</p>
