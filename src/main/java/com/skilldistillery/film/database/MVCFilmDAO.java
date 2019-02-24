@@ -32,24 +32,40 @@ public class MVCFilmDAO implements FilmDAO {
 
 	@Override
 	public Film addFilm(Film addFilm) {
-		Film filmToBeInserted = null;
+		Film newFilm = null;
+
+		String sql = "INSERT INTO film ( title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating) " + " VALUES (?,?,?,?,?,?,?,?,?)";
+		
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
-			conn.setAutoCommit(false); // START TRANSACTION
-			String sql = "INSERT INTO film ( title, description, release_year, replacement_cost, rating) "
-					+ " VALUES (?,?,?,?,?)";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			conn.setAutoCommit(false);
+			
 			stmt.setString(1, addFilm.getTitle());
 			stmt.setString(2, addFilm.getDescription());
 			stmt.setLong(3, addFilm.getRelease_year());
-			stmt.setDouble(4, addFilm.getReplacement_cost());
-			stmt.setString(5, addFilm.getRating());
+			stmt.setInt(4, addFilm.getLanguage_id());
+			stmt.setInt(5, addFilm.getRental_duration());
+			stmt.setDouble(6, addFilm.getRental_rate());
+			stmt.setInt(7, addFilm.getLength());
+			stmt.setDouble(8, addFilm.getReplacement_cost());
+			stmt.setString(9, addFilm.getRating());
 //			ResultSet updateCount = stmt.executeQuery();
+			
+			int newKey = stmt.executeUpdate();
+			
+			addFilm.setId(newKey);
+			newFilm = addFilm;
+			
+			//close connections
+			conn.commit();
+			conn.close();
+			stmt.close();
 
 		} catch (Exception e) {
 		}
 
-		return filmToBeInserted;
+		return newFilm;
 
 	}
 
@@ -69,7 +85,7 @@ public class MVCFilmDAO implements FilmDAO {
 				String title = filmResult.getString("title");
 				String description = filmResult.getString("description");
 				int release_year = filmResult.getInt("release_year");
-				String language_id = filmResult.getString("language_id");
+				int language_id = filmResult.getInt("language_id");
 				int rental_duration = filmResult.getInt("rental_duration");
 				double rental_rate = filmResult.getDouble("rental_rate");
 				int length = filmResult.getInt("length");
