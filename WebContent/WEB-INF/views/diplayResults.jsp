@@ -26,10 +26,11 @@
 				<input type="submit" name="filmID" value="Delete Film" />
 			</form>
 			<br>
-			<a href="index.html">Return to main menu</a>
+			<a href="index.html">return to main menu</a>
 		</c:when>
 		<c:otherwise>
 			<p>No Film Found</p>
+			<a href="index.html">return to main menu</a>
 		</c:otherwise>
 	</c:choose>
 	

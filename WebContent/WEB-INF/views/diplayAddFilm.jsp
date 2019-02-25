@@ -53,11 +53,12 @@
 		</c:when>
 		<c:otherwise>
 			<p>Film Not Added</p>
+			<a href="index.html">return to main menu</a>
 		</c:otherwise>
 	</c:choose>
 
 	<h2>
-		<a href=http://localhost:8080/MVCFilmSite/a.html><< Back</a>
+		<a href="index.html">return to main menu</a>
 	</h2>
 
 </body>

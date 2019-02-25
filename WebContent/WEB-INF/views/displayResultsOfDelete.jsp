@@ -11,9 +11,11 @@
 	<c:choose>
 		<c:when test="${test}">
 			<p>Movie is removed</p>
+			<a href="index.html">return to main menu</a>
 		</c:when>
 		<c:otherwise>
 			<p>No film found</p>
+			<a href="index.html">return to main menu</a>
 		</c:otherwise>
 	</c:choose>
 </body>

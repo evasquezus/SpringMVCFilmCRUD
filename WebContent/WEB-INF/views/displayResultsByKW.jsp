@@ -22,9 +22,11 @@
 				<br>
 				<c:out value="${film.rating} "></c:out>
 			</ul>
+			<a href="index.html">return to main menu</a>
 		</c:when>
 		<c:otherwise>
 			<p>No Film Found</p>
+			<a href="index.html">return to main menu</a>
 		</c:otherwise>
 	</c:choose>
 </body>

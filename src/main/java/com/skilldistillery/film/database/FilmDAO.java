@@ -1,7 +1,5 @@
 package com.skilldistillery.film.database;
 
-import java.sql.SQLException;
-
 import com.skilldistillery.film.entities.Film;
 
 public interface FilmDAO {
