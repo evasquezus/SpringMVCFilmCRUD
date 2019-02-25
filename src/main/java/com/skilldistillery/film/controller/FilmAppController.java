@@ -1,7 +1,6 @@
 package com.skilldistillery.film.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +30,7 @@ public class FilmAppController {
 		return "WEB-INF/views/home.jsp";
 	}
 
+	@SuppressWarnings("finally")
 	@RequestMapping(path = "GetFilm.do", params = { "filmID" }, method = RequestMethod.GET)
 	public ModelAndView getFilmByID(@RequestParam("filmID") int filmID) {
 		ModelAndView mv = new ModelAndView();
@@ -46,8 +46,10 @@ public class FilmAppController {
 		}
 
 	}
-	
-	@RequestMapping(path = "AddFilm.do", params = { "title", "description", "release_year", "language_id", "rental_duration", "rental_rate", "length", "replacement_cost", "rating"}, method = RequestMethod.POST)
+
+	@SuppressWarnings("finally")
+	@RequestMapping(path = "AddFilm.do", params = { "title", "description", "release_year", "language_id",
+			"rental_duration", "rental_rate", "length", "replacement_cost", "rating" }, method = RequestMethod.POST)
 	public ModelAndView addFilm(Film film) {
 		ModelAndView mv = new ModelAndView();
 		dao.addFilm(film);
@@ -55,6 +57,23 @@ public class FilmAppController {
 			mv.addObject("film", film);
 			mv.setViewName("WEB-INF/views/diplayAddFilm.jsp");
 		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return mv;
+		}
+
+	}
+
+	@SuppressWarnings("finally")
+	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.POST)
+	public ModelAndView deleteFilm(@RequestParam(value = "filmID") int id) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/diplayResultsOfDelete.jsp");
+		try {
+			dao.deleteFilm(dao.findFilmById(id));
+			mv.addObject("filmRemoved", id);
+			mv.setViewName("WEB-INF/views/home.jsp");
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			return mv;

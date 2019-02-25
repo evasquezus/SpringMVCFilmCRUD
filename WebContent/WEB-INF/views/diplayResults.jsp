@@ -25,5 +25,14 @@
 			<p>No Film Found</p>
 		</c:otherwise>
 	</c:choose>
+	
+	<h3>Would you like to delete this film?</h3>
+	<form action="deleteFilm.do" method="POST" name="filmID">
+		<input type="text" name="filmID" value="${film.id}" /> <input
+			type="submit" name="filmID" value="Delete Film" />
+	</form>
+	<br>
+	<a href="index.html">Return to main menu</a>
+	
 </body>
 </html>

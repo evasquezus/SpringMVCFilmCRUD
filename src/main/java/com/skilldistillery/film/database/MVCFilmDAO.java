@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.skilldistillery.film.entities.Actor;
@@ -33,14 +32,16 @@ public class MVCFilmDAO implements FilmDAO {
 	@Override
 	public Film addFilm(Film addFilm) {
 		Film newFilm = null;
+		Connection conn;
 
-		String sql = "INSERT INTO film ( title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating) " + " VALUES (?,?,?,?,?,?,?,?,?)";
-		
+		String sql = "INSERT INTO film ( title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating) "
+				+ " VALUES (?,?,?,?,?,?,?,?,?)";
+
 		try {
-			Connection conn = DriverManager.getConnection(URL, user, pass);
+			conn = DriverManager.getConnection(URL, user, pass);
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			conn.setAutoCommit(false);
-			
+
 			stmt.setString(1, addFilm.getTitle());
 			stmt.setString(2, addFilm.getDescription());
 			stmt.setLong(3, addFilm.getRelease_year());
@@ -51,13 +52,13 @@ public class MVCFilmDAO implements FilmDAO {
 			stmt.setDouble(8, addFilm.getReplacement_cost());
 			stmt.setString(9, addFilm.getRating());
 //			ResultSet updateCount = stmt.executeQuery();
-			
+
 			int newKey = stmt.executeUpdate();
-			
+
 			addFilm.setId(newKey);
 			newFilm = addFilm;
-			
-			//close connections
+
+			// close connections
 			conn.commit();
 			conn.close();
 			stmt.close();
@@ -67,6 +68,29 @@ public class MVCFilmDAO implements FilmDAO {
 
 		return newFilm;
 
+	}
+
+	public Film deleteFilm(Film film) {
+
+		Film film = null;
+		Connection conn = null;
+		String sql = "DELETE FROM film WHERE id = ?";
+
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			conn.setAutoCommit(false);
+
+			stmt.setInt(1, film.getId());
+			stmt.executeUpdate();
+			conn.commit();
+
+			stmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return film;
 	}
 
 	@Override
@@ -107,7 +131,6 @@ public class MVCFilmDAO implements FilmDAO {
 		}
 		return film;
 	}
-
 //	@Override
 //	public Actor findActorById(int actorID) {
 //		Actor actor = null;

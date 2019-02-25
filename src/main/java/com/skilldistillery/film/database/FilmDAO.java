@@ -1,8 +1,7 @@
 package com.skilldistillery.film.database;
 
-import java.util.List;
+import java.sql.SQLException;
 
-import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 public interface FilmDAO {
@@ -15,4 +14,6 @@ public interface FilmDAO {
 //	List<Film> findFilmByKW(String filmKW);
 //
 	Film addFilm(Film film);
+	
+	void deleteFilm(Film filmId);
 }
