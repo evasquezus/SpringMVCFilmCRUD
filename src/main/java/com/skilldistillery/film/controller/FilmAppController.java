@@ -68,16 +68,15 @@ public class FilmAppController {
 	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.POST)
 	public ModelAndView deleteFilm(@RequestParam(value = "filmID") int id) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/views/diplayResultsOfDelete.jsp");
+		mv.setViewName("WEB-INF/views/displayResultsOfDelete.jsp");
 		try {
-			dao.deleteFilm(dao.findFilmById(id));
-			mv.addObject("filmRemoved", id);
-			mv.setViewName("WEB-INF/views/home.jsp");
-		} catch (SQLException e) {
+			boolean test = dao.deleteFilm(dao.findFilmById(id));
+			mv.addObject("test", test);
+			System.out.println("AM I HERE");
+		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			return mv;
 		}
+		return mv;
 
 	}
 

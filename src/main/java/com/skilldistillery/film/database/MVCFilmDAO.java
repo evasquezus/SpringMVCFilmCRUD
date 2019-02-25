@@ -70,9 +70,8 @@ public class MVCFilmDAO implements FilmDAO {
 
 	}
 
-	public Film deleteFilm(Film film) {
+	public boolean deleteFilm(Film film) {
 
-		Film film = null;
 		Connection conn = null;
 		String sql = "DELETE FROM film WHERE id = ?";
 
@@ -89,8 +88,9 @@ public class MVCFilmDAO implements FilmDAO {
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
-		return film;
+		return true;
 	}
 
 	@Override
