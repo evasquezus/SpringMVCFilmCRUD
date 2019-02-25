@@ -7,25 +7,53 @@
 <meta charset="UTF-8">
 <title>Film By ID</title>
 </head>
-<img src="https://www.streetsatsouthpoint.com/content/dam/rw-2/images/mall-images/mall-features/movies-desktop.png" style="max-width:100%">
+<img
+	src="https://www.streetsatsouthpoint.com/content/dam/rw-2/images/mall-images/mall-features/movies-desktop.png"
+	style="max-width: 100%">
 <body>
 	<h1>Displaying Results</h1>
 	<br>
+
 	<c:choose>
 		<c:when test="${! empty film}">
 			<ul>
-				<h1>Film title</h1>
-				<c:out value="${film.title} "></c:out>
-				<br>
-				<h1>Film rating</h1>
-				<c:out value="${film.rating} "></c:out>
-				<br>
-				<h1>Film description</h1>
-				<c:out value="${film.description} "></c:out>
-				<br>
-				<h1>Film rating</h1>
-				<c:out value="${film.rating} "></c:out>
-				<br>
+				<p>
+					Title:
+					<c:out value="${film.title} "></c:out>
+				</p>
+				<p>
+					Description:
+					<c:out value="${film.description} "></c:out>
+				</p>
+				<p>
+					Release Year:
+					<c:out value="${film.release_year} "></c:out>
+				</p>
+				<p>
+					Language ID:
+					<c:out value="${film.language_id} "></c:out>
+				</p>
+				<p>
+					Rental Length:
+					<c:out value="${film.rental_duration} "></c:out>
+				</p>
+				<p>
+					Rental Rate:
+					<c:out value="${film.rental_rate} "></c:out>
+				</p>
+				<p>
+					Film Length:
+					<c:out value="${film.length} "></c:out>
+				</p>
+				<p>
+					Replacement Cost:
+					<c:out value="${film.replacement_cost} "></c:out>
+				</p>
+				<p>
+					Rating:
+					<c:out value="${film.rating} "></c:out>
+				</p>
+
 			</ul>
 		</c:when>
 		<c:otherwise>

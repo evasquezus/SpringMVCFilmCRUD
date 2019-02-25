@@ -10,20 +10,30 @@
 <body>
 	<h1>Displaying Results</h1>
 	<br>
+
 	<c:choose>
-		<c:when test="${! empty film}">
+		<c:when test="${! empty filmList}">
+			<c:forEach var="film" items="${filmList}">
+					href="<c:url value="GetFilmById.do?filmId=${films.id}" />">ID: <c:out
+					value="${ film.id}" />
+				<br> 
+				Title: <c:out value="${ film.title}" />
+				<br>
+					Description: <c:out value="${ film.description}" />
+				<br>
+			</c:forEach>
 			<ul>
 				<h1>Film title</h1>
-				<c:out value="${filmKW.title} "></c:out>
+				<c:out value="${filmkW.title} "></c:out>
 				<br>
 				<h1>Film rating</h1>
-				<c:out value="${filmKW.rating} "></c:out>
+				<c:out value="${filmkW.rating} "></c:out>
 				<br>
 				<h1>Film description</h1>
-				<c:out value="${filmKW.description} "></c:out>
+				<c:out value="${filmkW.description} "></c:out>
 				<br>
 				<h1>Film rating</h1>
-				<c:out value="${filmKW.rating} "></c:out>
+				<c:out value="${filmkW.rating} "></c:out>
 				<br>
 			</ul>
 		</c:when>

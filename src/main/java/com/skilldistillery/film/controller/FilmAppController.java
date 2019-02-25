@@ -40,15 +40,14 @@ public class FilmAppController {
 	}
 
 	@RequestMapping(path = "GetKeyword.do", params = { "filmKW" }, method = RequestMethod.GET)
-	public ModelAndView getFilmByKW(String filmKW) {
+	public ModelAndView getFilmByKW(@RequestParam("filmkW") String filmKW) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> films = new ArrayList<Film>();
 		try {
 			films = dao.findFilmByKW(filmKW);
 			System.out.println(films.toString());
-			mv.addObject("filmList", films);
+			mv.addObject("film", films);
 			mv.setViewName("WEB-INF/views/diplayResultsKW.jsp");
-			return mv;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -57,7 +56,7 @@ public class FilmAppController {
 	}
 
 	@RequestMapping(path = "deleteFilm.do", params = { "filmID" }, method = RequestMethod.POST)
-	public ModelAndView deleteFilm(int filmId) throws SQLException {
+	public ModelAndView deleteFilm(@RequestParam("filmID") int filmId) throws SQLException {
 		ModelAndView mv = new ModelAndView();
 		boolean filmRemvoved = dao.deleteFilm(filmId);
 		mv.addObject("filmRemoved", filmRemvoved);
@@ -69,19 +68,3 @@ public class FilmAppController {
 	}
 
 }
-
-// { "id", "second" },
-//	@RequestMapping(path = "AddFilm.do", params = { "title", "description", "release_year", "replacement_cost", "rating" }, method = RequestMethod.POST)
-//	public ModelAndView addFilm(Film film) {
-//		ModelAndView mv = new ModelAndView();
-//		dao.addFilm(film);
-//		try {
-//			mv.addObject("film", film);
-//			mv.setViewName("WEB-INF/views/diplayResults.jsp");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			return mv;
-//		}
-//
-//	}
