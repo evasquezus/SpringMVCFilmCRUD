@@ -1,7 +1,6 @@
 package com.skilldistillery.film.entities;
 
 import java.util.List;
-
 public class Film {
 
 	private int id;
@@ -15,15 +14,14 @@ public class Film {
 	private double replacement_cost;
 	private String rating;
 	private List<Actor> actor;
-
 	public int getId() {
 		return id;
 	}
 
 	public Film() {
-
+	
 	}
-
+	
 	public Film(int id, String title, String description, int release_year, int language_id, int rental_duration,
 			double rental_rate, int length, double replacement_cost, String rating, List<Actor> actor) {
 		super();
@@ -41,13 +39,16 @@ public class Film {
 	}
 
 	public Film(int id2, String title2, int release_year2, String rating2, String description2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Film(int id2, String title2, int release_year2, String description2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Film(int id2, String title2, String description2, int releaseYear, int languageID, int rentalDuration,
 			String languageID2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

@@ -4,49 +4,27 @@
 <meta charset="UTF-8">
 <title>MVC APP</title>
 </head>
-<img
-	src="https://www.streetsatsouthpoint.com/content/dam/rw-2/images/mall-images/mall-features/movies-desktop.png"
-	style="max-width: 100%; align: center;">
 <body>
-	<h1 style="text-align: center; color: darkred;">Welcome to MVC
-		Film</h1>
-	<p>At MVC Film studio we have over hundreds of film for you to
-		choose from, please sitback relax and look through our collections</p>
+  <h1 style="text-align:center; color:darkred;">Welcome to MVC Film</h1>
 
-	<div
-		style="background-color: white; background-image: url(http://mysteriouswritings.com/wp-content/uploads/2017/02/movie.jpg); border: 1px solid black; width: 300px; height: 300px; font-size: 18px;">
-		<h4>would you like to:</h4>
 
-		<h3>Get film by ID</h3>
-		<form action="GetFilm.do" method="GET">
-			<p>
-				<input type="text" name="filmID" /> <input type="submit"
-					value="Search" />
-			</p>
-		</form>
+	<h3>Get film by ID</h3>
+	<form action="GetFilm.do" method="GET">
+		<p>
+			<input type="text" name="filmID" /> <input type="submit"
+				value="Search" />
+		</p>
+	</form>
 
-		<h3>Get film by Keyword</h3>
-		<form action="GetKeyword.do" method="GET">
-			<p>
-				<input type="text" name="filmkW" /> <input type="submit"
-					value="Search"  />
-			</p>
-		</form>
+	<h3>Get film by Keyword</h3>
+	<form action="GetKeyword.do" method="GET">
+		<p>
+			<input type="text" name="FilmkW" /> <input type="submit"
+				value="Search" name="FilmKWButton" />
+		</p>
+	</form>
 
-		<h3>Add new Film</h3>
-		<form action="AddFilm.do" method="POST">
-			<p>
-				<input type="text" name="FilmId" /> <input type="submit"
-					value="Search" name="AddFilmButton" />
-			</p>
-
-		</form>
-
-	</div>
-	<br>
-	<br>
-
+	<h3><a href="a.html">Add New Film</a></h3>
+  </div>
 </body>
-<footer style="text-align: center">&copy; Copyright 2019 SD19</footer>
-
 </html>

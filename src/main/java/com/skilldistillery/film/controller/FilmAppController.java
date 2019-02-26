@@ -1,8 +1,5 @@
 package com.skilldistillery.film.controller;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.database.FilmDAO;
 import com.skilldistillery.film.entities.Film;
@@ -23,6 +19,17 @@ public class FilmAppController {
 	@Autowired
 	private FilmDAO dao;
 
+	@RequestMapping("/")
+	public String mainMenu() {
+		return "WEB-INF/views/diplayResults.jsp";
+	}
+
+	@RequestMapping("home.do")
+	public String mainMenu1() {
+		return "WEB-INF/views/home.jsp";
+	}
+
+	@SuppressWarnings("finally")
 	@RequestMapping(path = "GetFilm.do", params = { "filmID" }, method = RequestMethod.GET)
 	public ModelAndView getFilmByID(@RequestParam("filmID") int filmID) {
 		ModelAndView mv = new ModelAndView();
@@ -34,20 +41,35 @@ public class FilmAppController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-
+			return mv;
 		}
-		return mv;
+
 	}
 
-	@RequestMapping(path = "GetKeyword.do", params = { "filmKW" }, method = RequestMethod.GET)
-	public ModelAndView getFilmByKW(@RequestParam("filmkW") String filmKW) {
+	@SuppressWarnings("finally")
+	@RequestMapping(path = "AddFilm.do", params = { "title", "description", "release_year", "language_id",
+			"rental_duration", "rental_rate", "length", "replacement_cost", "rating" }, method = RequestMethod.POST)
+	public ModelAndView addFilm(Film film) {
 		ModelAndView mv = new ModelAndView();
-		List<Film> films = new ArrayList<Film>();
+		dao.addFilm(film);
 		try {
-			films = dao.findFilmByKW(filmKW);
-			System.out.println(films.toString());
-			mv.addObject("film", films);
-			mv.setViewName("WEB-INF/views/diplayResultsKW.jsp");
+			mv.addObject("film", film);
+			mv.setViewName("WEB-INF/views/diplayAddFilm.jsp");
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			return mv;
+		}
+	}
+
+	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.POST)
+	public ModelAndView deleteFilm(@RequestParam(value = "filmID") int id) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/displayResultsOfDelete.jsp");
+		try {
+			boolean test = dao.deleteFilm(dao.findFilmById(id));
+			mv.addObject("test", test);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,16 +77,18 @@ public class FilmAppController {
 
 	}
 
-	@RequestMapping(path = "deleteFilm.do", params = { "filmID" }, method = RequestMethod.POST)
-	public ModelAndView deleteFilm(@RequestParam("filmID") int filmId) throws SQLException {
-		ModelAndView mv = new ModelAndView();
-		boolean filmRemvoved = dao.deleteFilm(filmId);
-		mv.addObject("filmRemoved", filmRemvoved);
-		mv.setViewName("WEB-INF/views/diplayResultsOfDelete.jsp");
-		if (!filmRemvoved) {
-			return null;
-		}
-		return mv;
-	}
-
+//	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
+//	public ModelAndView getFilmByID(String FilmKW) {
+//		ModelAndView mv = new ModelAndView();
+//		List<Film> filmByKW = new ArrayList<Film>();
+//		try {
+//			filmByKW = dao.findFilmByKW(FilmKW);
+//			mv.addObject("film", filmByKW);
+//			mv.setViewName("WEB-INF/views/diplayResults.jsp");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return mv;
+//
+//	}
 }
