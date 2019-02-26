@@ -1,5 +1,6 @@
 package com.skilldistillery.film.controller;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.database.FilmDAO;
 import com.skilldistillery.film.entities.Film;
+
+import antlr.collections.List;
 
 @Controller
 public class FilmAppController {
@@ -57,7 +60,7 @@ public class FilmAppController {
 			mv.setViewName("WEB-INF/views/diplayAddFilm.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		} finally {
 			return mv;
 		}
@@ -77,18 +80,18 @@ public class FilmAppController {
 
 	}
 
-//	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
-//	public ModelAndView getFilmByID(String FilmKW) {
-//		ModelAndView mv = new ModelAndView();
-//		List<Film> filmByKW = new ArrayList<Film>();
-//		try {
-//			filmByKW = dao.findFilmByKW(FilmKW);
-//			mv.addObject("film", filmByKW);
-//			mv.setViewName("WEB-INF/views/diplayResults.jsp");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return mv;
-//
-//	}
+	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
+	public ModelAndView getFilmByID(String FilmKW) {
+		ModelAndView mv = new ModelAndView();
+		List<Film> filmByKW = new ArrayList<Film>();
+		try {
+			filmByKW = dao.findFilmByKW(FilmKW);
+			mv.addObject("film", filmByKW);
+			mv.setViewName("WEB-INF/views/diplayResults.jsp");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mv;
+
+	}
 }
