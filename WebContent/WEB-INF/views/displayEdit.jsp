@@ -5,14 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Film By ID</title>
+<title>MVCAPP</title>
 </head>
-<img
-	src="https://www.streetsatsouthpoint.com/content/dam/rw-2/images/mall-images/mall-features/movies-desktop.png"
-	style="max-width: 100%">
 <body>
-	<h1>Displaying Results</h1>
-	<br>
 
 	<c:choose>
 		<c:when test="${! empty film}">
@@ -57,25 +52,14 @@
 			</ul>
 		</c:when>
 		<c:otherwise>
-			<p>No Film Found</p>
+			<p>Film was not edited</p>
+			<a href="index.html">return to main menu</a>
 		</c:otherwise>
 	</c:choose>
 
-	<h3>Would you like to edit this film?</h3>
-	<form action="editFilm.do" method="GET">
-		<p>
-			<input type="text" name="filmID" value="${film.id}" /> <input type="submit"
-				value="Edit" />
-		</p>
-	</form>
-	<h3>Would you like to delete this film?</h3>
-	<form action="deleteFilm.do" method="POST" name="filmID">
-		<input type="text" name="filmID" value="${film.id}" /> <input
-			type="submit" name="filmID" value="Delete Film" />
-	</form>
-	<br>
-	<a href="index.html">Return to main menu</a>
+	<h2>
+		<a href="index.html">return to main menu</a>
+	</h2>
+
 </body>
 </html>
-
-

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
@@ -126,11 +127,43 @@ public class MVCFilmDAO implements FilmDAO {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return film;
 	}
+
+	public boolean editFilm(Film film, int filmId) {
+		Connection conn;
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
+			String sql = "UPDATE film SET title= ?, description=? ,release_year= ?, rental_duration=? rental_rate = ?, length = ?, replacement_cost = ?, rating =?, language_id= ?WHERE id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, film.getTitle());
+			stmt.setString(2, film.getDescription());
+			stmt.setInt(3, film.getRelease_year());
+			stmt.setInt(4, film.getRental_duration());
+			stmt.setDouble(5, film.getRental_rate());
+			stmt.setInt(6, film.getLength());
+			stmt.setDouble(7, film.getReplacement_cost());
+			stmt.setString(8, film.getRating());
+			stmt.setInt(9, film.getLanguage_id());
+			stmt.setInt(10, film.getId());
+
+			int newKey = stmt.executeUpdate();
+
+		} catch (Exception e) {
+
+		}
+
+		return true;
+	}
+
+	@Override
+	public List<Film> findFilmByKW(String filmKW) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 //	@Override
 //	public Actor findActorById(int actorID) {
 //		Actor actor = null;
@@ -192,29 +225,47 @@ public class MVCFilmDAO implements FilmDAO {
 //	}
 //
 //	@Override
-//	public List<Film> findFilmByKW(String filmKW) {
-//		List<Film> films = new ArrayList<>();
-//		Film film = null;
+//	public List<Film> findFilmByKW(String keyword) {
+//		List<Film> filmList = new ArrayList<Film>();
+//
+//		String sql = "SELECT id, title, description, rating, release_year, rental_rate, language_id,replacement_cost, length,rental_duration FROM film JOIN language ON language.id=film.language_id WHERE title LIKE ? OR description LIKE ?";
+//
 //		try {
 //			Connection conn = DriverManager.getConnection(URL, user, pass);
-//			String sql = "SELECT * FROM film WHERE title LIKE ? OR description like ?;";
-//			PreparedStatement stmt = conn.prepareStatement(sql);
-//			stmt.setString(1, "%" + filmKW + "%");
-//			stmt.setString(2, "%" + filmKW + "%");
-//			ResultSet filmResult = stmt.executeQuery();
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//
+//			// set parameter
+//			ps.setString(1, "%" + keyword + "%");
+//			ps.setString(2, "%" + keyword + "%");
+//
+//			ResultSet filmResult = ps.executeQuery();
 //
 //			while (filmResult.next()) {
-//
-//				films.add(findFilmById(filmResult.getInt("id")));
+//				int id = filmResult.getInt("id");
+//				String title = filmResult.getString("title");
+//				String description = filmResult.getString("description");
+//				int release_year = filmResult.getInt("release_year");
+//				int language_id = filmResult.getInt("language_id");
+//				int rental_duration = filmResult.getInt("rental_duration");
+//				double rental_rate = filmResult.getDouble("rental_rate");
+//				int length = filmResult.getInt("length");
+//				String rating = filmResult.getString("rating");
+//				double replacement_cost = filmResult.getDouble("replacement_cost");
+//				List<Actor> actors = new ArrayList<>();
+//				filmList.add(new Film(id, title, description, release_year, language_id, rental_duration, rental_rate,
+//						length, replacement_cost, rating, actors));
+//				System.out.println(filmList);
 //
 //			}
+//			System.out.println(filmList);
+//			return filmList;
 //
-//			conn.close();
-//			filmResult.close();
-//			stmt.close();
 //		} catch (SQLException e) {
+//			System.out.println("Cant find such film ");
 //			e.printStackTrace();
+//		} finally {
+//			return filmList;
 //		}
-//		return films;
+//
 //	}
 }

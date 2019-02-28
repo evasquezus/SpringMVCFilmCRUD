@@ -1,6 +1,7 @@
 package com.skilldistillery.film.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.database.FilmDAO;
 import com.skilldistillery.film.entities.Film;
-
-import antlr.collections.List;
 
 @Controller
 public class FilmAppController {
@@ -66,6 +65,23 @@ public class FilmAppController {
 		}
 	}
 
+	@SuppressWarnings("finally")
+	@RequestMapping(path = "editFilm.do", params = { "filmID" }, method = RequestMethod.GET)
+	public ModelAndView editFilm(@RequestParam("filmID") int filmID) {
+		ModelAndView mv = new ModelAndView();
+		Film filmSearched;
+		try {
+			filmSearched = dao.findFilmById(filmID);
+			mv.addObject("film", filmSearched);
+			mv.setViewName("WEB-INF/views/editFilm.jsp");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return mv;
+		}
+
+	}
+
 	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.POST)
 	public ModelAndView deleteFilm(@RequestParam(value = "filmID") int id) {
 		ModelAndView mv = new ModelAndView();
@@ -80,14 +96,14 @@ public class FilmAppController {
 
 	}
 
-	@RequestMapping(path = "GetKeyword.do", method = RequestMethod.GET)
-	public ModelAndView getFilmByID(String FilmKW) {
+	@RequestMapping(path = "GetKeyword.do", params = "filmKW", method = RequestMethod.GET)
+	public ModelAndView getFilmByID(@RequestParam("filmKW") String FilmKW) {
 		ModelAndView mv = new ModelAndView();
-		List<Film> filmByKW = new ArrayList<Film>();
+		List<Film> filmSearched = dao.findFilmByKW(FilmKW);
 		try {
-			filmByKW = dao.findFilmByKW(FilmKW);
-			mv.addObject("film", filmByKW);
-			mv.setViewName("WEB-INF/views/diplayResults.jsp");
+			System.out.println(filmSearched);
+			mv.addObject("film", filmSearched);
+			mv.setViewName("WEB-INF/views/diplayResultsKW.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

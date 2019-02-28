@@ -12,9 +12,9 @@
 	<br>
 
 	<c:choose>
-		<c:when test="${! empty filmList}">
-			<c:forEach var="film" items="${filmList}">
-					href="<c:url value="GetFilmById.do?filmId=${films.id}" />">ID: <c:out
+		<c:when test="${! empty film}">
+			<c:forEach var="film" items="${film }">
+					href="<c:url value="GetKeyword.do?filmId=${film.id}" />">ID: <c:out
 					value="${ film.id}" />
 				<br> 
 				Title: <c:out value="${ film.title}" />
@@ -24,16 +24,16 @@
 			</c:forEach>
 			<ul>
 				<h1>Film title</h1>
-				<c:out value="${filmkW.title} "></c:out>
+				<c:out value="${film.title} "></c:out>
 				<br>
 				<h1>Film rating</h1>
-				<c:out value="${filmkW.rating} "></c:out>
+				<c:out value="${film.rating} "></c:out>
 				<br>
 				<h1>Film description</h1>
-				<c:out value="${filmkW.description} "></c:out>
+				<c:out value="${film.description} "></c:out>
 				<br>
 				<h1>Film rating</h1>
-				<c:out value="${filmkW.rating} "></c:out>
+				<c:out value="${film.rating} "></c:out>
 				<br>
 			</ul>
 		</c:when>
