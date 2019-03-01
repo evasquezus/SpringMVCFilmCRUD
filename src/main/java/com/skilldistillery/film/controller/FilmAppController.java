@@ -82,6 +82,16 @@ public class FilmAppController {
 
 	}
 
+	@RequestMapping(path = "editFilm.do", method = RequestMethod.POST)
+	public ModelAndView displayEdit(Film film) {
+		ModelAndView mv = new ModelAndView();
+		Film filmEdited = film;
+		dao.editFilm(filmEdited, film.getId());
+		mv.setViewName("WEB-INF/views/displayEdit.jsp");
+		return mv;
+
+	}
+
 	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.POST)
 	public ModelAndView deleteFilm(@RequestParam(value = "filmID") int id) {
 		ModelAndView mv = new ModelAndView();

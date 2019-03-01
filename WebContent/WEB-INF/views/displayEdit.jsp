@@ -52,6 +52,7 @@
 			</ul>
 		</c:when>
 		<c:otherwise>
+		
 			<p>Film was not edited</p>
 			<a href="index.html">return to main menu</a>
 		</c:otherwise>
