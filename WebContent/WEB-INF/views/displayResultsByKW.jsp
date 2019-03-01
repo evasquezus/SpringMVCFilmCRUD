@@ -20,7 +20,7 @@
 				<br>
 				<Strong>Rating:</Strong>
 				<br>
-				<c:out value="${film.rating} "></c:out>
+				<c:out value="${film.release_year} "></c:out>
 			</ul>
 			<a href="index.html">return to main menu</a>
 		</c:when>
